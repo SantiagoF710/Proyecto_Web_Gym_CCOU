@@ -1,17 +1,47 @@
-
+// web/MiServidor.js
 
 const manejarErrores = (error = new Error('Error desconocido')) => {
   console.error('Ha ocurrido un error:', error.message);
   throw error;
 };
 
-const API_BASE = window.location.origin; 
-const obtenerUrl = (ruta) =>
-  `${API_BASE}/${ruta}`.replace(/\/+/, '/');
+// --------------------------------------
+// URL base dinámica (local vs Render)
+// --------------------------------------
+const getApiBase = () => {
+  const LOCAL_API = 'http://localhost:3000';
+
+  try {
+    // Si estamos en Node o no hay window, usamos local
+    if (typeof window === 'undefined') {
+      return LOCAL_API;
+    }
+
+    const { hostname, origin } = window.location;
+
+    // Casos locales:
+    // - localhost
+    // - 127.0.0.1
+    // - abrir el archivo directamente (hostname = '')
+    if (!hostname || hostname === 'localhost' || hostname === '127.0.0.1') {
+      return LOCAL_API;
+    }
+
+    // Cualquier otro host (Render, etc.)
+    return origin;
+  } catch {
+    return LOCAL_API;
+  }
+};
+
+const API_BASE = getApiBase();
+
+// ANTES: `http://localhost:3000/${ruta}`
+// AHORA usa API_BASE (local o Render)
+const obtenerUrl = (ruta) => `${API_BASE}/${ruta}`;
 
 const procesarRespuesta = (res) => {
   return res.json().then((data) => {
-
     if (data.error) {
       throw new Error(data.mensaje || 'Error en el servidor');
     }
@@ -25,11 +55,14 @@ const headers = {
 };
 
 export class MiServidor {
+  // ANTES: 'http://localhost:3000'
+  // AHORA: API_BASE (local o Render)
   static urlBase = API_BASE;
 
   static obtenerUrl(ruta) {
-    return obtenerUrl(ruta);
+    return `${MiServidor.urlBase}/${ruta}`;
   }
+
   static signup(actividad, nombre, documento, correo) {
     const body = JSON.stringify({ actividad, nombre, documento, correo });
 
@@ -64,8 +97,7 @@ export class MiServidor {
       throw error;
     }
   }
-  
-  
+
   static adminLogin(documento) {
     const body = JSON.stringify({ documento });
 
@@ -78,14 +110,14 @@ export class MiServidor {
       .catch(manejarErrores);
   }
 
-    static buscarUsuariosPorDocumento(documentoParcial) {
+  static buscarUsuariosPorDocumento(documentoParcial) {
     const query = `usuarios?documento=${encodeURIComponent(documentoParcial)}`;
     return fetch(obtenerUrl(query), { method: 'GET', headers })
       .then(procesarRespuesta)
       .catch(manejarErrores);
   }
 
-static obtenerRutina(documento, dia) {
+  static obtenerRutina(documento, dia) {
     const params = new URLSearchParams({ documento, dia }).toString();
     return fetch(obtenerUrl(`rutinas?${params}`), {
       method: 'GET',
@@ -93,7 +125,6 @@ static obtenerRutina(documento, dia) {
       .then(procesarRespuesta)
       .catch(manejarErrores);
   }
-
 
   static agregarEjercicio({ documento, dia, ejercicio, series, repeticiones }) {
     const body = JSON.stringify({
@@ -114,12 +145,14 @@ static obtenerRutina(documento, dia) {
   }
 
   static async actualizarEjercicio(id, datos) {
-    const respuesta = await fetch(`http://localhost:3000/rutinas/${id}`, {
+    // ANTES: 'http://localhost:3000/rutinas/${id}'
+    // AHORA usamos obtenerUrl para que también funcione en Render
+    const respuesta = await fetch(obtenerUrl(`rutinas/${id}`), {
       method: 'PUT',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(datos)
+      body: JSON.stringify(datos),
     });
 
     if (!respuesta.ok) {
@@ -137,4 +170,3 @@ static obtenerRutina(documento, dia) {
     }).then(procesarRespuesta);
   }
 }
-
