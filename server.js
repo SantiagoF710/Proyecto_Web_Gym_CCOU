@@ -3,6 +3,9 @@ import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
 import { conectarDB } from './database/conexion.js';
 import { postSignup } from './controladores/postSignup.js';
 import { postLogin } from './controladores/postLogin.js';
