@@ -18,12 +18,21 @@ import { manejarErrores } from './middlewares/manejarErrores.js';
 
 await conectarDB();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const port = process.env.PORT || 3000;
 
 
 app.use(cors());
 app.use(bodyParser.json());   
+
+app.use(express.static(path.join(__dirname, 'web')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'web', 'secciones', 'login.html'));
+});
 
 app.post('/signup', postSignup);
 app.post('/login', postLogin);
@@ -39,10 +48,6 @@ app.put('/rutinas/:id', putRutinaUsuarios);
 app.delete('/rutinas/:id', deleteRutinaUsuarios);
 
 app.use(manejarErrores);
-
-app.get('/', (req, res) => {
-  res.send('API Gimnasio CCOU funcionando');
-});
 
 
 app.listen(port, () => {
