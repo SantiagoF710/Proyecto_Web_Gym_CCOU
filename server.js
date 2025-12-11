@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'web')));
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'web', 'secciones', 'login.html'));
+  res.redirect('/secciones/login.html');
 });
 
 app.post('/signup', postSignup);
