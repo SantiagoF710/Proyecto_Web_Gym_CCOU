@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BackOffice - CCOU</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <img src="img/CCOU2.png" alt="Logo Círculo Católico" class="logo" />
+      <h1 class="title">GIMNASIO CCOU</h1>
+      <p class="subtitle">CÍRCULO CATÓLICO DE OBREROS DEL URUGUAY</p>
+    </header>
+
+    <section class="login-card">
+      <h2 class="card-title">BackOffice</h2>
+      <p class="card-subtitle">
+        Círculo Católico Obreros del Uruguay
+      </p>
+
+      <form class="login-form" id="formAdmin">
+        <label for="documento">Documento de identidad</label>
+        <input type="text" id="documento" name="documento" placeholder="50790108" required/>
+
+        <button type="submit" class="btn-primary">Entrar</button>
+        <p id="mensajeAdmin"></p>
+      </form>
+    </section>
+  </main>
+  
+  <script type="module" src="../Miutiles.js"></script>
+  <script type="module" src="../MiServidor.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

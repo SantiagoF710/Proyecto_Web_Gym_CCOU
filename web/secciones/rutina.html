@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rutina Semanal - Gimnasio CCOU</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <header class="navbar">
+      <img src="img/CCOU.png" alt="Círculo Católico" class="nav-logo" />
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Inicio</a>
+        <a href="rutina.html" class="active">Rutina</a>
+        <a href="staff.html">Staff</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="login.html" class="exit-btn">Salir</a>
+      </nav>
+    </header>
+
+    <main class="routine-container">
+      <section class="routine-header">
+        <h1>Rutina Semanal</h1>
+        <p>
+          Plan de entrenamiento para
+          <strong id="routineActivity">tu actividad</strong>
+        </p>
+      </section>
+
+      <section class="routine-grid" id="routineGrid"></section>
+
+      <section class="attention">
+        <h3>¿Necesitás atención inmediata?</h3>
+        <p>
+          Para emergencias médicas durante el entrenamiento, comunicate
+          directamente con el personal del sanatorio o marcá el interno
+          correspondiente.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="social">
+        <span>Facebook</span>
+        <span>WhatsApp</span>
+        <span>YouTube</span>
+      </div>
+      <p>info@circulocatolico.com.uy</p>
+    </footer>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="../MiServidor.js"></script>
+    <script type="module" src="rutina.js"></script>
+  </body>
+</html>

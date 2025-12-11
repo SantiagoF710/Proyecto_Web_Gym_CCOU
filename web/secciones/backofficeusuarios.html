@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+  <title>BackOffice - Rutina del usuario</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar backoffice-nav">
+    <img src="img/CCOU.png" alt="Círculo Católico" class="nav-logo" />
+    <h1 class="backoffice-title">BackOffice</h1>
+    <a href="backofficebusqueda.html" class="exit-btn">Salir</a>
+  </header>
+
+  <main class="routine-main">
+    <section class="routine-user-section">
+      <div class="routine-user-header">
+        <img
+          src="img/logo.png"
+          alt="Foto del usuario"
+          class="routine-user-photo"
+        />
+        <div class="routine-user-data">
+          <h2 id="routineUserName">Rutina de ...</h2>
+          <p id="routineUserDoc">Documento: -</p>
+          <p id="routineUserActivity">Actividad: -</p>
+        </div>
+      </div>
+
+      <div class="routine-controls">
+        <select id="routineDaySelect" class="routine-day-select">
+          <option value="" disabled selected>Selecciona un día</option>
+          <option value="Lunes">Lunes</option>
+          <option value="Martes">Martes</option>
+          <option value="Miércoles">Miércoles</option>
+          <option value="Jueves">Jueves</option>
+          <option value="Viernes">Viernes</option>
+          <option value="Sábado/Domingo">Sábado/Domingo</option>
+        </select>
+
+        <button type="button" class="btn-secondary routine-add-btn" id="routineAddBtn">
+          Agregar rutina
+        </button>
+      </div>
+    </section>
+
+    <section class="routine-panel-admin">
+      <h2 id="routineDayTitle" class="routine-day-title">
+        Selecciona un día
+      </h2>
+
+      <div
+        class="routine-exercises-grid"
+        id="routineExercisesGrid"
+      >
+      </div>
+    </section>
+  </main>
+
+  <div
+    class="routine-modal-overlay"
+    id="routineModalOverlay"
+  >
+    <div class="routine-modal">
+      <h3 id="routineModalTitle">Agregar ejercicio</h3>
+
+      <label for="modalEjercicio">Ejercicio</label>
+      <select id="modalEjercicio">
+  <option value="" disabled selected>Selecciona un ejercicio</option>
+  <optgroup label="Musculación">
+    <option value="Press de banca">Press de banca</option>
+    <option value="Press inclinado">Press inclinado</option>
+    <option value="Press militar">Press militar</option>
+    <option value="Remo con barra">Remo con barra</option>
+    <option value="Remo con mancuerna">Remo con mancuerna</option>
+    <option value="Dominadas asistidas">Dominadas asistidas</option>
+    <option value="Jalón al pecho">Jalón al pecho</option>
+    <option value="Curl de bíceps con barra">Curl de bíceps con barra</option>
+    <option value="Curl de bíceps alterno">Curl de bíceps alterno</option>
+    <option value="Extensiones de tríceps">Extensiones de tríceps</option>
+    <option value="Aperturas con mancuernas">Aperturas con mancuernas</option>
+    <option value="Sentadillas con barra">Sentadillas con barra</option>
+    <option value="Peso muerto rumano">Peso muerto rumano</option>
+  </optgroup>
+
+  <optgroup label="Yoga">
+    <option value="Saludo al sol">Saludo al sol</option>
+    <option value="Perro boca abajo">Perro boca abajo</option>
+    <option value="Postura del niño">Postura del niño</option>
+    <option value="Guerrero I">Guerrero I</option>
+    <option value="Guerrero II">Guerrero II</option>
+    <option value="Postura del árbol">Postura del árbol</option>
+    <option value="Postura del puente">Postura del puente</option>
+    <option value="Postura del gato-vaca">Postura del gato-vaca</option>
+    <option value="Torsión espinal suave">Torsión espinal suave</option>
+    <option value="Postura de la cobra">Postura de la cobra</option>
+    <option value="Postura de la pinza">Postura de la pinza</option>
+  </optgroup>
+
+  <optgroup label="Zumba">
+    <option value="Paso básico de salsa">Paso básico de salsa</option>
+    <option value="Paso básico de merengue">Paso básico de merengue</option>
+    <option value="Paso de reggaetón">Paso de reggaetón</option>
+    <option value="Grapevine">Grapevine</option>
+    <option value="Cadera lado a lado">Cadera lado a lado</option>
+    <option value="Saltos laterales">Saltos laterales</option>
+    <option value="Rodillas altas">Rodillas altas</option>
+    <option value="Paso de cumbia">Paso de cumbia</option>
+    <option value="Marcha con brazos">Marcha con brazos</option>
+    <option value="Vuelta latina">Vuelta latina</option>
+  </optgroup>
+
+  <optgroup label="Pilates">
+    <option value="El cien">El cien</option>
+    <option value="Puente de glúteos">Puente de glúteos</option>
+    <option value="Roll up">Roll up</option>
+    <option value="Patada lateral">Patada lateral</option>
+    <option value="Círculos de piernas">Círculos de piernas</option>
+    <option value="Serrucho">Serrucho</option>
+    <option value="Teaser">Teaser</option>
+    <option value="Plancha en antebrazos">Plancha en antebrazos</option>
+    <option value="Estiramiento de columna adelante">Estiramiento de columna adelante</option>
+    <option value="Estiramiento del gato">Estiramiento del gato</option>
+  </optgroup>
+
+  <optgroup label="Rehabilitación">
+    <option value="Caminata suave en cinta">Caminata suave en cinta</option>
+    <option value="Elevaciones de talón">Elevaciones de talón</option>
+    <option value="Flexión de rodilla en apoyo">Flexión de rodilla en apoyo</option>
+    <option value="Extensión de rodilla sentado">Extensión de rodilla sentado</option>
+    <option value="Abducción de cadera con banda">Abducción de cadera con banda</option>
+    <option value="Rotación externa de hombro con banda">Rotación externa de hombro con banda</option>
+    <option value="Flexión de hombro con mancuernas ligeras">Flexión de hombro con mancuernas ligeras</option>
+    <option value="Isométrico de cuádriceps">Isométrico de cuádriceps</option>
+    <option value="Movilidad de tobillo">Movilidad de tobillo</option>
+    <option value="Estiramiento de isquiotibiales en silla">Estiramiento de isquiotibiales en silla</option>
+  </optgroup>
+</select>
+
+      <label for="modalSeries">Series</label>
+      <input type="number" id="modalSeries" min="1" max="10"  placeholder="Ej: 3"/>
+
+      <label for="modalReps">Repeticiones</label>
+      <input type="text" id="modalReps" placeholder="Ej: 8-10"/>
+
+      <p id="modalError" class="routine-modal-error"></p>
+
+      <div class="routine-modal-actions">
+        <button type="button" class="btn-small btn-outline" id="modalCancelar">
+          Cancelar
+        </button>
+        <button type="button" class="btn-small btn-secondary" id="modalGuardar">
+          Guardar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="routine-confirm-overlay" id="routineConfirmOverlay">
+    <div class="routine-confirm">
+      <p id="routineConfirmText">
+        ¿Seguro que deseas eliminar este ejercicio?
+      </p>
+      <div class="routine-modal-actions">
+        <button type="button" class="btn-small btn-outline" id="confirmCancelar">
+          Cancelar
+        </button>
+        <button type="button" class="btn-small btn-secondary" id="confirmAceptar">
+          Eliminar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../MiServidor.js"></script>
+  <script type="module" src="backofficeusuarios.js"></script>
+</body>
+</html>

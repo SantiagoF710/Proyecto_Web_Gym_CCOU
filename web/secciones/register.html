@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registro - Gimnasio CCOU</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="container">
+    <header class="header">
+      <img src="img/CCOU2.png" alt="Logo Círculo Católico" class="logo" />
+      <h1 class="title">GIMNASIO CCOU</h1>
+      <p class="subtitle">CÍRCULO CATÓLICO DE OBREROS DEL URUGUAY</p>
+    </header>
+
+    <section class="login-card">
+      <h2 class="card-title">Portal de Acceso</h2>
+      <p class="card-subtitle">
+        Ingresa a tu cuenta o regístrate para acceder al gimnasio
+      </p>
+
+      <div class="tab-buttons">
+        <button class="tab-btn" onclick="window.location.href='login.html'">Iniciar sesión</button>
+        <button class="tab-btn active">Registrarse</button>
+      </div>
+
+      <form class="login-form">
+        <label for="actividad">Actividad Principal</label>
+        <select id="actividad" name="actividad" required>
+          <option value="" disabled selected>Selecciona una opción</option>
+          <option value="musculacion">Musculación</option>
+          <option value="yoga">Yoga</option>
+          <option value="zumba">Zumba</option>
+          <option value="pilates">Pilates</option>
+          <option value="rehabilitacion">Rehabilitación</option>
+        </select>
+
+        <label for="nombre">Nombre Completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Juan Pérez" required />
+
+        <label for="documento">Documento de identidad</label>
+        <input type="text" id="documento" name="documento" placeholder="50790108" required />
+
+        <label for="correo">Correo Electrónico</label>
+        <input type="email" id="correo" name="correo" placeholder="ejemplo@correo.com" required />
+
+        <button type="submit" class="btn-primary">Registrarse</button>
+        <p id="mensajeSignup" style="margin-top: 0.8rem; color: darkred;"></p>
+      </form>
+    </section>
+  </main>
+  
+  <script type="module" src="../Miutiles.js"></script>
+  <script type="module" src="../MiServidor.js"></script>
+  <script type="module" src="register.js"></script>
+</body>
+</html>

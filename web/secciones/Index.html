@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio - Gimnasio CCOU</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <img src="img/CCOU.png" alt="Círculo Católico" class="nav-logo" />
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="Index.html" class="active">Inicio</a>
+        <a href="rutina.html">Rutina</a>
+        <a href="staff.html">Staff</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="perfil.html">Perfil</a>
+        <a href="login.html" class="exit-btn">Salir</a>
+      </nav>
+    </header>
+
+    <main class="home-container">
+      <section class="welcome">
+        <h2 id="homeWelcome">¡Bienvenido!</h2>
+        <p id="homeSubtitle">
+        </p>
+      </section>
+
+      <section class="stats">
+        <div class="stat-box">
+          <p>Progreso del día</p>
+          <h3 id="statProgress">0%</h3>
+        </div>
+
+        <div class="stat-box">
+          <p>Ejercicios terminados</p>
+          <h3 id="statCompleted">0/0</h3>
+        </div>
+
+        <div class="stat-box">
+          <p>Tiempo estimado</p>
+          <h3 id="statTime">0 min</h3>
+        </div>
+      </section>
+
+      <section class="routine">
+        <div class="routine-header">
+          <h3>
+            Rutina de hoy - <span id="homeActivity">Musculación</span>
+          </h3>
+          <button class="btn-secondary" onclick="window.location.href='rutina.html'">
+            Ver rutina completa
+          </button>
+        </div>
+
+        <p class="routine-subtitle">
+          Marca los ejercicios conforme los completes
+        </p>
+
+        <div class="exercise-list" id="exerciseList">
+        </div>
+      </section>
+
+      <button class="help-btn" onclick="window.location.href='rutina.html'">¿Necesitás ayuda con tu rutina?</button>
+    </main>
+
+    <footer class="footer">
+      <div class="social">
+        <span>Facebook</span>
+        <span>WhatsApp</span>
+        <span>YouTube</span>
+      </div>
+      <p>info@circulocatolico.com.uy</p>
+    </footer>
+
+    <script type="module" src="../MiServidor.js"></script>
+    <script type="module" src="home.js"></script>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>

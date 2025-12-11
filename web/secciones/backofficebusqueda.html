@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BackOffice - Búsqueda de usuario</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="navbar backoffice-nav">
+    <img src="img/CCOU.png" alt="Círculo Católico" class="nav-logo" />
+    <h1 class="backoffice-title">BackOffice</h1>
+    <a href="admin.html" class="exit-btn">Salir</a>
+  </header>
+
+  <main class="backoffice-main">
+    <section class="backoffice-panel">
+      <h2 class="backoffice-heading">Buscar usuario</h2>
+
+      <form class="backoffice-search-form">
+        <input type="text" id="documentoBusqueda" class="backoffice-input" placeholder="Documento de identidad"/>
+        <button type="button" class="btn-primary backoffice-search-btn">
+          Buscar
+        </button>
+      </form>
+
+      <h2 class="backoffice-heading">Resultado</h2>
+
+      <div class="backoffice-results"></div>
+    </section>
+  </main>
+
+  <script type="module" src="../Miutiles.js"></script>
+  <script type="module" src="../MiServidor.js"></script>
+  <script type="module" src="backofficebusqueda.js"></script>
+</body>
+</html>
+

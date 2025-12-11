@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Perfil - Gimnasio CCOU</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <header class="navbar">
+      <img src="img/CCOU.png" alt="Círculo Católico" class="nav-logo" />
+
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Inicio</a>
+        <a href="rutina.html">Rutina</a>
+        <a href="staff.html">Staff</a>
+        <a href="contacto.html">Contacto</a>
+        <a href="perfil.html" class="active">Perfil</a>
+        <a href="login.html" class="exit-btn">Salir</a>
+      </nav>
+    </header>
+
+    <main class="profile-container">
+      <section class="profile-header">
+        <img
+          src="img/logo.png"
+          alt="Foto de perfil"
+          class="profile-photo"
+        />
+        <div class="profile-info">
+          <h2 id="profileName">Nombre del usuario</h2>
+          <p>Miembro del Gimnasio CCOU</p>
+          <p id="profileDocHeader">Documento: -</p>
+          <p id="profileActivityHeader">Actividad: -</p>
+        </div>
+      </section>
+
+
+      <section class="profile-stats">
+        <div class="stat-box">
+          <span>🏆</span>
+          <p><strong id="statTrainings">0</strong></p>
+          <p>Entrenamientos</p>
+        </div>
+
+        <div class="stat-box">
+          <span>⏱</span>
+          <p><strong id="statHours">0</strong>h</p>
+          <p>Horas totales</p>
+        </div>
+
+        <div class="stat-box">
+          <span>📅</span>
+          <p><strong id="statDays">0</strong></p>
+          <p>Días consecutivos</p>
+        </div>
+
+        <div class="stat-box">
+          <span>💪</span>
+          <p><strong id="statActivity">Actividad</strong></p>
+          <p>Actividad</p>
+        </div>
+      </section>
+
+
+      <section class="profile-data">
+        <h3>Información Personal</h3>
+        <p>Gestiona tus datos personales y preferencias</p>
+
+        <div class="data-card">
+          <div class="data-group">
+            <label for="profileFullNameInput">Nombre Completo</label>
+            <input type="text" id="profileFullNameInput" readonly />
+          </div>
+
+          <div class="data-group">
+            <label for="profileDocInput">Documento de identidad</label>
+            <input type="text" id="profileDocInput" readonly />
+          </div>
+
+          <div class="data-group">
+            <label for="profileEmailInput">Correo electrónico</label>
+            <input type="email" id="profileEmailInput" readonly />
+          </div>
+
+          <div class="data-group">
+            <label for="profileActivityInput">Actividad</label>
+            <input type="text" id="profileActivityInput" readonly />
+          </div>
+        </div>
+      </section>
+
+
+      <section class="profile-note">
+        <h4>Recordatorio</h4>
+        <p>
+          Verificá siempre que tus datos personales estén actualizados. Esto nos
+          permite mantenerte informado sobre novedades, actividades y beneficios
+          exclusivos.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="social">
+        <span>Facebook</span>
+        <span>WhatsApp</span>
+        <span>YouTube</span>
+      </div>
+      <p>info@circulocatolico.com.uy</p>
+    </footer>
+
+
+    <script type="module" src="../MiServidor.js"></script>
+    <script type="module" src="script.js"></script>
+    <script type="module" src="perfil.js"></script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio de Sesión - Gimnasio CCOU</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <img src="img/CCOU2.png" alt="Logo Círculo Católico" class="logo" />
+        <h1 class="title">GIMNASIO CCOU</h1>
+        <p class="subtitle">CÍRCULO CATÓLICO DE OBREROS DEL URUGUAY</p>
+      </header>
+
+      <section class="login-card">
+        <h2 class="card-title">Portal de Acceso</h2>
+        <p class="card-subtitle">
+          Ingresa a tu cuenta o regístrate para acceder al gimnasio
+        </p>
+
+        <div class="tab-buttons">
+          <button class="tab-btn active">Iniciar Sesión</button>
+          <button
+            class="tab-btn"
+            onclick="window.location.href='register.html'"
+          >
+            Registrarse
+          </button>
+        </div>
+
+        <form class="login-form">
+          <label for="documento">Documento de identidad</label>
+          <input
+            type="text"
+            id="documento"
+            name="documento"
+            placeholder="50790108"
+            required
+          />
+          <button type="submit" class="btn-primary">Iniciar Sesión</button>
+          <p id="mensajeLogin"></p>
+        </form>
+      </section>
+    </main>
+
+    <script type="module" src="../MiUtiles.js"></script>
+    <script type="module" src="../MiServidor.js"></script>
+    <script type="module" src="login.js"></script>
+  </body>
+</html>
