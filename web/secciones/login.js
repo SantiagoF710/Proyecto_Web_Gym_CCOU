@@ -27,7 +27,7 @@ if (formLogin) {
         sessionStorage.setItem('sesionActiva', 'TRUE');
         sessionStorage.setItem('usuarioApp', JSON.stringify(usuario));
 
-        window.location.href = 'index.html';
+        window.location.href = 'Index.html';
       })
       .catch((error) => {
         console.error(error);

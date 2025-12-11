@@ -19,10 +19,10 @@ import { controlarSesion } from './middlewares/controlarSesion.js';
 import { manejarErrores } from './middlewares/manejarErrores.js';
 
 
-await conectarDB();
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+await conectarDB();
 
 const app = express();
 const port = process.env.PORT || 3000;
