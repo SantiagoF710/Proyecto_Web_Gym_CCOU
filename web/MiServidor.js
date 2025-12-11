@@ -5,7 +5,9 @@ const manejarErrores = (error = new Error('Error desconocido')) => {
   throw error;
 };
 
-const obtenerUrl = (ruta) => `http://localhost:3000/${ruta}`;
+const API_BASE = window.location.origin; 
+const obtenerUrl = (ruta) =>
+  `${API_BASE}/${ruta}`.replace(/\/+/, '/');
 
 const procesarRespuesta = (res) => {
   return res.json().then((data) => {
@@ -23,11 +25,10 @@ const headers = {
 };
 
 export class MiServidor {
-  static urlBase = 'http://localhost:3000';
-
+  static urlBase = API_BASE;
 
   static obtenerUrl(ruta) {
-    return `${MiServidor.urlBase}/${ruta}`;
+    return obtenerUrl(ruta);
   }
   static signup(actividad, nombre, documento, correo) {
     const body = JSON.stringify({ actividad, nombre, documento, correo });
