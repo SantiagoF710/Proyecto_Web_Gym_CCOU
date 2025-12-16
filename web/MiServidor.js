@@ -1,33 +1,23 @@
-// web/MiServidor.js
 
 const manejarErrores = (error = new Error('Error desconocido')) => {
   console.error('Ha ocurrido un error:', error.message);
   throw error;
 };
 
-// --------------------------------------
-// URL base dinámica (local vs Render)
-// --------------------------------------
 const getApiBase = () => {
   const LOCAL_API = 'http://localhost:3000';
 
   try {
-    // Si estamos en Node o no hay window, usamos local
     if (typeof window === 'undefined') {
       return LOCAL_API;
     }
 
     const { hostname, origin } = window.location;
 
-    // Casos locales:
-    // - localhost
-    // - 127.0.0.1
-    // - abrir el archivo directamente (hostname = '')
     if (!hostname || hostname === 'localhost' || hostname === '127.0.0.1') {
       return LOCAL_API;
     }
 
-    // Cualquier otro host (Render, etc.)
     return origin;
   } catch {
     return LOCAL_API;
@@ -36,8 +26,6 @@ const getApiBase = () => {
 
 const API_BASE = getApiBase();
 
-// ANTES: `http://localhost:3000/${ruta}`
-// AHORA usa API_BASE (local o Render)
 const obtenerUrl = (ruta) => `${API_BASE}/${ruta}`;
 
 const procesarRespuesta = (res) => {
@@ -55,8 +43,6 @@ const headers = {
 };
 
 export class MiServidor {
-  // ANTES: 'http://localhost:3000'
-  // AHORA: API_BASE (local o Render)
   static urlBase = API_BASE;
 
   static obtenerUrl(ruta) {
@@ -145,8 +131,6 @@ export class MiServidor {
   }
 
   static async actualizarEjercicio(id, datos) {
-    // ANTES: 'http://localhost:3000/rutinas/${id}'
-    // AHORA usamos obtenerUrl para que también funcione en Render
     const respuesta = await fetch(obtenerUrl(`rutinas/${id}`), {
       method: 'PUT',
       headers: {
